@@ -1,5 +1,5 @@
 clean_bq:
-	for table in `bq ls --max_results=10000  --project_id $(gcp_project_id) | grep $(gcp_dataset)` ; do \
+	for table in `bq ls --max_results=10000  --project_id $(GCP_PROJECT_ID) | grep $(GCP_DATASET)` ; do \
 	  bq rm -r -f $$table;\
 	 done
 

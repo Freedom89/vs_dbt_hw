@@ -40,8 +40,8 @@ Edit the env vars you need in your docker image.
 * Create an `env` folder with file named `env_file`. 
 
 ```
-gcp_project_id=<<input your gcp project>>
-gcp_dataset=<<input dataset>>
+GCP_PROJECT_ID=<<input your gcp project>>
+GCP_DATASET=<<input dataset>>
 PYTHONPATH=workspaces/vs_dbt_hw
 ```
 
@@ -49,19 +49,21 @@ PYTHONPATH=workspaces/vs_dbt_hw
 
 First, install your packages by `pip install -r requirements.txt` (you might want to create a new venv). 
 
-Next, configure your os.environ variables `gcp_project_id`, `gcp_dataset`. If you intend to also use the python src folder, define the `PYTHONPATH` to be the folder name.
+Next, configure your os.environ variables `GCP_PROJECT_ID`, `GCP_DATASET`. If you intend to also use the python src folder, define the `PYTHONPATH` to be the folder name.
 
 Fore example, if you are running this in terminal, 
 
 ```
-export gcp_project=<<id>>
-export gcp_dataset=<<dataset>>
+export GCP_PROJECT_ID=<<id>>
+export GCP_DATASET=<<dataset>>
 export PYTHONPATH=$(pwd)
 ```
 
 Last, move the `.dbt/profiles.yml` to your `$HOME` directory. If you installed `make`, you can run `make update_profile`. Note, this will replace your existing profile if you have one! 
 
-Cd into `dbt_hw` directory, 
+cd into `dbt_hw` directory, 
 
 * run `dbt deps` to install the packages for dbt
+* run `dbt seed` to load the seeds into bigquery. 
 * you should now be able to run `dbt run`.
+* as well as `dbt test`. 
