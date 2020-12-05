@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: bqpublic
+    database: bigquery-public-data
+    schema: wikipedia
+    tables:
+      - name: pageviews_2020
+      - name: pageviews_2019

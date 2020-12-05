@@ -1,0 +1,65 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.122.1/containers/docker-existing-dockerfile
+{
+  "name": "Existing Dockerfile",
+  // Sets the run context to one level up instead of the .devcontainer folder.
+  "context": "..",
+  // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+  "dockerFile": "../Dockerfile",
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "terminal.integrated.shell.linux": null,
+    "python.pythonPath": "/opt/conda/bin/python",
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": false,
+    "python.testing.pytestArgs": ["."],
+    "editor.formatOnSave": true,
+    "python.linting.enabled": false,
+    "python.linting.flake8Enabled": false,
+    "editor.tabCompletion": "on",
+    "python.sendSelectionToInteractiveWindow": true,
+    "python.formatting.provider": "black",
+    "workbench.colorTheme": "Default Dark+",
+    "python.linting.mypyEnabled": true,
+    "python.linting.flake8Args": ["--max-line-length=88"],
+    "python.linting.pylintEnabled": false,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "cSpell.enabled": true
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "ms-python.python",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "njpwerner.autodocstring",
+    "ms-python.vscode-pylance",
+    "streetsidesoftware.code-spell-checker",
+    "bastienboutonnet.vscode-dbt",
+    "innoverio.vscode-dbt-power-user",
+    "bierner.markdown-mermaid",
+    "foam.foam-vscode",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "yzhang.markdown-all-in-one",
+    "kortina.vscode-markdown-notes",
+    "tchayen.markdown-links",
+    "henriblancke.vscode-dbt-formatter"
+  ],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8888, 8080],
+  // Uncomment the next line to run commands after the container is created - for example installing curl.
+  // "postCreateCommand": "apt-get update && apt-get install -y curl",
+  "postCreateCommand": "pip install -r requirements-vscode.txt &&apt-get update && apt-get install -y curl && apt-get install -y git-all && cp -r .dbt /root/",
+  // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+  // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+  "runArgs": ["--env-file=env/env_file"],
+  "mounts": [
+    "source=${localEnv:HOME}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached"
+  ],
+  // "mounts": ["source=${localEnv:Home}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached"],
+  // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+  // "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  // "remoteUser": "vscode"
+  "shutdownAction": "stopContainer"
+}

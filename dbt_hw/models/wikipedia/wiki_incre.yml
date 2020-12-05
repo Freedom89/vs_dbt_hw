@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: wiki_incre
+    description: ""
+    columns:
+      - name: partition_date
+        description: ""
+
+      - name: title
+        description: ""
+
+      - name: n_views
+        description: ""
+
+      - name: rn
+        description: ""

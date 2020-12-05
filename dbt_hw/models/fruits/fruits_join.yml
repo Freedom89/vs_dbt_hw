@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: fruits_join
+    description: ""
+    columns:
+      - name: fruit
+        description: ""
+        tests:
+          - accepted_values:
+              values: ["apple", "pear", "orange", "watermelon"]
+
+      - name: size
+        description: ""
+
+      - name: color
+        description: ""
+        tests:
+          - accepted_values:
+              values: ["red", "orange", "green"]
+
+      - name: id
+        description: ""
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('orders')
+              field: id
+
+      - name: quantity
+        description: ""

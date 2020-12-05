@@ -1,0 +1,12 @@
+my_dbt_profile: # this needs to match the profile: in your dbt_project.yml file
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: "{{env_var('gcp_project_id')}}"
+      dataset: "{{env_var('gcp_dataset')}}"
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive

@@ -1,0 +1,21 @@
+{
+  "files.associations": {
+    "*.sql": "jinja-sql",
+    "*.yaml": "jinja-yaml",
+    "*.yml": "jinja-yaml"
+  },
+  "editor.minimap.enabled": false,
+  "editor.wrappingIndent": "indent",
+  "editor.overviewRulerBorder": false,
+  "editor.lineHeight": 24,
+  "[markdown]": {
+    "editor.quickSuggestions": true
+  },
+  "git.enableSmartCommit": true,
+  "git.postCommitCommand": "sync",
+  "markdown.links.openLocation": "beside",
+  "markdown-links.autoStart": true,
+  "editor.formatOnSave": true,
+  "jupyter.jupyterServerType": "local",
+  "jupyter.allowUnauthorizedRemoteConnection": true
+}
