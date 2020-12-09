@@ -13,8 +13,11 @@ gcp_auth:
 	https://www.googleapis.com/auth/cloud-platform,\
 	https://www.googleapis.com/auth/drive.readonly
 
-
 init_dbt:
 	dbt init $(project_name) --adapter bigquery
 
 
+DBT_PATH=dbt_hw/target/compiled/my_new_project/
+TYPE=models #analysis #tests
+dry_run:
+	bq query --use_legacy_sql=false --dry_run --flagfile=$$(find $(DBT_PATH)$(TYPE) -name $(FILE))
